@@ -1,4 +1,7 @@
-use std::{env, io::{BufWriter, Write, stdout}};
+use std::{
+    env,
+    io::{stdout, BufWriter, Write},
+};
 fn main() {
     let args = env::args().collect::<Vec<String>>();
 

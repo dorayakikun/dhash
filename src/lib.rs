@@ -1,4 +1,4 @@
-use image::{imageops::FilterType::Triangle};
+use image::imageops::FilterType::Triangle;
 
 pub fn calculate(path: &str) -> String {
     // TODO error の実装
@@ -13,7 +13,7 @@ pub fn calculate(path: &str) -> String {
         let row_start_index = row * 9;
         for colum in 0..8 {
             let left_pixel_index = row_start_index + colum;
-            diff.push(pixels[left_pixel_index] > pixels[left_pixel_index + 1]); 
+            diff.push(pixels[left_pixel_index] > pixels[left_pixel_index + 1]);
         }
     }
 
@@ -29,5 +29,11 @@ pub fn calculate(path: &str) -> String {
         }
     }
 
-    format!("0x{}", hash_string)
+    hash_string
+}
+
+pub fn hamming_distance(a: &str, b: &str) -> u32 {
+    // TODO: add error handling
+    let i = i64::from_str_radix(a, 16).unwrap() ^ i64::from_str_radix(b, 16).unwrap();
+    i.count_ones()
 }
